@@ -206,7 +206,7 @@ async def upload_pdf(req: func.HttpRequest) -> func.HttpResponse:
 
         # Add to ChromaDB
         embedding_function = OpenAIEmbeddings(api_key=OPENAI_API_KEY)
-        chroma_client = chromadb.HttpClient(host=CHROMADB_HOST, port=CHROMADB_PORT)
+        chroma_client = chromadb.HttpClient(host=CHROMADB_HOST, port=CHROMADB_PORT, headers={})
         collection = chroma_client.get_or_create_collection("langchain")
         vectorstore = Chroma(
             client=chroma_client,
@@ -234,7 +234,7 @@ async def upload_pdf(req: func.HttpRequest) -> func.HttpResponse:
 def rag_chat(req: func.HttpRequest) -> func.HttpResponse:
 
     embedding_function = OpenAIEmbeddings(api_key=OPENAI_API_KEY)
-    chroma_client = chromadb.HttpClient(host=CHROMADB_HOST, port=CHROMADB_PORT)
+    chroma_client = chromadb.HttpClient(host=CHROMADB_HOST, port=CHROMADB_PORT, headers={})
     collection = chroma_client.get_or_create_collection("langchain")
     vectorstore = Chroma(
         client=chroma_client,
