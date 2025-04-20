@@ -20,8 +20,8 @@ from azure.keyvault.secrets import SecretClient
 import chromadb
 
 
-keyVaultName = os.environ.get("KEY_VAULT_NAME")
-KVUri = f"https://{keyVaultName}.vault.azure.net"
+#keyVaultName = os.environ.get("KEY_VAULT_NAME")
+KVUri = f"https://tr-keyvault-chatbot-sda.vault.azure.net"
 
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
